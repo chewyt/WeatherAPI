@@ -22,7 +22,7 @@
         <div class="col lining text-center">
             <div th:each="station: ${data}">
                 <div>
-                    <img th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}" th:alt="@{'Icon code: '+${station.icon}}" width="100em">
+                    <img class="icon" th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}" th:alt="@{'Icon code: '+${station.icon}}" width="100em">
                 </div>
                 
             </div>
@@ -46,7 +46,11 @@
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <a href="/" class="btn btn-primary btn-lg">Back</a>
+        </div>
+    </div>
 </body>
 
 </html>
