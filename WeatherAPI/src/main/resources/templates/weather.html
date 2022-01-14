@@ -22,8 +22,8 @@
         <div class="col lining text-center">
             <div th:each="station: ${data}">
                 <div >
-                    <img class="icon" th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}"
-                        th:alt="@{'Icon code: '+${station.icon}}" width="100em">
+               
+             <img class="icon" th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}"  th:alt="@{'Icon code: '+${station.icon}}" width="100em">
                 </div>
 
             </div>

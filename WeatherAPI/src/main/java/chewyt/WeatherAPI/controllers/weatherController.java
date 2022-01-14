@@ -34,6 +34,6 @@ public class weatherController {
         model.addAttribute("city", city);
         model.addAttribute("data", stationReadings);
         return "weather";   
-    }
+    }   
 
 }
