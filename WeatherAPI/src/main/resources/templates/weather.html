@@ -19,10 +19,10 @@
     <!-- <h3 th:text="${data}"></h3> -->
 
     <div class=" row w-50 mt-5">
-        <div class="col lining text-center">
+        <div class="col lining text-center icon">
             <div th:each="station: ${data}">
                 <div>
-                    <img class="icon" th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}" th:alt="@{'Icon code: '+${station.icon}}" width="100em">
+                    <img th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}" th:alt="@{'Icon code: '+${station.icon}}" width="100em">
                 </div>
                 
             </div>
