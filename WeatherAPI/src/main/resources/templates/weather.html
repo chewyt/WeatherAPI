@@ -18,16 +18,17 @@
     </div>
     <!-- <h3 th:text="${data}"></h3> -->
 
-    <div class=" row w-50 mt-5 icon">
-        <div class="col lining text-center icon">
+    <div class=" row w-50 mt-5">
+        <div class="col lining text-center">
             <div th:each="station: ${data}">
-                <div class="icon">
-                    <img th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}" th:alt="@{'Icon code: '+${station.icon}}" width="100em">
+                <div class="icon" id="icon">
+                    <img th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}"
+                        th:alt="@{'Icon code: '+${station.icon}}" width="100em">
                 </div>
-                
+
             </div>
         </div>
-        
+
         <div class="col text-left">
             <div th:each="station: ${data}">
                 <div>
