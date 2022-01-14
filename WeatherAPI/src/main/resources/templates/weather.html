@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Search</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="">
+
+    <div class="text-center">
+        <a href="index.html"><img class="" src="/icon.png" height="100px" alt="logo"></a>
+        <h1 class="fst-italic mb-3" th:text="'Weather for '+${city}"></h1>
+    </div>
+    <!-- <h3 th:text="${data}"></h3> -->
+
+    <div class=" row w-50 mt-5">
+        <div class="col lining text-center">
+            <div th:each="station: ${data}">
+                <div>
+                    <img th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}" th:alt="@{'Icon code: '+${station.icon}}" width="100em">
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="col text-left">
+            <div th:each="station: ${data}">
+                <div>
+                    <span><strong>City: </strong></span>
+                    <span th:text=${station.cityName}>hi</span>
+                </div>
+                <div>
+                    <span> <strong>Temperature: </strong></span>
+                    <span th:text=${station.tempDisplay}>hi</span>
+                </div>
+                <div>
+                    <span> <strong>Description:</strong> </span>
+                    <span th:text=${station.description}>hi</span>
+                </div>
+                <!-- <img th:src="@{'numbers/number'+${num}+'.jpg'}" th:alt="@{'number '+${num}}" width="100em"> -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

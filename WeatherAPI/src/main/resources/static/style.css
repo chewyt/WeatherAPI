@@ -1,0 +1,20 @@
+.searchbar {
+    width: 80%;
+  }
+
+  body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  img{
+    border: 2px;
+    border-color: black;
+    box-shadow: -1px 1px 10px 5px rgba(0,0,0,0.3);
+    border-radius: 5px;
+  }
+
+  lining{
+    border-right: 2px;
+  }
