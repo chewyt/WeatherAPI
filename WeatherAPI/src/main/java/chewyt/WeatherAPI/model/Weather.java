@@ -17,6 +17,25 @@ public class Weather {
     private Float latitude;
     private Float longitude;
     private String tempDisplay;
+    private String countryCode;
+    private String countryName;
+    
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
 
     public String getTempDisplay() {
         return tempDisplay;
@@ -95,6 +114,8 @@ public class Weather {
                 .add("icon", icon)
                 .add("main", main)
                 .add("temperature", temperature)
+                .add("countryCode", countryCode)
+                .add("countryName", countryName)
                 .build();
     }
 
@@ -103,6 +124,18 @@ public class Weather {
         w.setMain(o.getString("main"));
         w.setDescription(o.getString("description"));
         w.setIcon(o.getString("icon"));
+        return w;
+    }
+    public static Weather createFromCache(JsonObject o) {
+        Weather w = new Weather();
+        w.setMain(o.getString("main"));
+        w.setDescription(o.getString("description"));
+        w.setIcon(o.getString("icon"));
+        w.setTemperature(o.getJsonNumber("temperature").doubleValue());
+        w.setCityName(o.getString("cityName"));
+        w.setCountryCode(o.getString("countryCode"));
+        w.setCountryName(o.getString("countryName"));
+
         return w;
     }
 
@@ -115,5 +148,12 @@ public class Weather {
             // TODO: Handle error
             return new Weather();
         }
+    }
+
+    public String getCityNameInSentenceCase() {
+
+        String caps = cityName.substring(0,1).toUpperCase();
+        String other = cityName.substring(1);
+        return caps.concat(other);
     }
 }

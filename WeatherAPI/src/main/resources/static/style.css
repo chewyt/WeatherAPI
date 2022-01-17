@@ -18,3 +18,8 @@
   lining{
     border-right: 2px;
   }
+
+  .error{
+    color: red;
+    
+  }

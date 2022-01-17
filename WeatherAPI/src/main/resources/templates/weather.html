@@ -14,16 +14,19 @@
 
     <div class="text-center">
         <a href="index.html"><img class="" src="/icon.png" height="100px" alt="logo"></a>
-        <h1 class="fst-italic mb-3" th:text="'Weather for '+${city}"></h1>
+        <h1 class="fst-italic mb-3" th:text="'Weather for '+${city}+', '+${country}"></h1>
+        <span><img th:src="@{'https://flagcdn.com/256x192/'+${countryCode}+'.png'}" th:alt="${country}"
+                width="50em"></span>
     </div>
     <!-- <h3 th:text="${data}"></h3> -->
 
     <div class=" row w-50 mt-5">
         <div class="col lining text-center">
             <div th:each="station: ${data}">
-                <div >
-               
-             <img class="icon" th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}"  th:alt="@{'Icon code: '+${station.icon}}" width="100em">
+                <div>
+
+                    <img class="icon" th:src="@{'http://openweathermap.org/img/wn/'+${station.icon}+'@2x.png'}"
+                        th:alt="@{'Icon code: '+${station.icon}}" width="100em">
                 </div>
 
             </div>

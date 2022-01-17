@@ -14,6 +14,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import chewyt.WeatherAPI.WeatherApiApplication;
+import static chewyt.WeatherAPI.Constants.*;
 
 @Configuration
 public class WeatherConfig {
@@ -22,29 +23,36 @@ public class WeatherConfig {
     private String redisHost;
     @Value("${spring.redis.port}")
     private Optional<Integer> redisPort;
-    @Value("${spring.redis.password}")
-    private Optional<String> redisPassword;
+    // @Value("${spring.redis.password}")
+    // private Optional<String> redisPassword;
 
-    Logger logger  = Logger.getLogger(WeatherApiApplication.class.getName());
+    Logger logger = Logger.getLogger(WeatherApiApplication.class.getName());
 
     @Bean
     public JedisConnectionFactory redisConnectionFactory() {
         final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
         config.setHostName(redisHost);
         config.setPort(redisPort.get());
-        config.setPassword(redisPassword.get());
+        config.setPassword(ENV_REDISCLOUD);
+        
         return new JedisConnectionFactory(config);
     }
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
-        final RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setHashKeySerializer(new StringRedisSerializer());
         RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer(getClass().getClassLoader());
+        final RedisTemplate<String, Object> template = new RedisTemplate<>();
+
+        //Ops for Value (Good for storing JSON string)
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new StringRedisSerializer());
+        
+        //Ops for Hash
+        template.setHashKeySerializer(new StringRedisSerializer());
         template.setHashValueSerializer(new StringRedisSerializer());
-        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        
         template.setConnectionFactory(redisConnectionFactory());
+
         return template;
     }
 
