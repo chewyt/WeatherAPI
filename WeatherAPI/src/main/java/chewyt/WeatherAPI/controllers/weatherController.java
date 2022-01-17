@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import chewyt.WeatherAPI.WeatherApiApplication;
 import chewyt.WeatherAPI.model.Weather;
 import chewyt.WeatherAPI.service.cacheService;
 import chewyt.WeatherAPI.service.weatherService;
+
 
 @Controller
 @RequestMapping(path = "/weather")
@@ -33,7 +35,7 @@ public class weatherController {
     @Autowired
     cacheService cacheService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+        @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String getWeather(@RequestBody MultiValueMap<String, String> form, Model model) {
 
         
