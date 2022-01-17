@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,10 +39,6 @@ public class RestyController {
         logger.info(">>>>>>>>Use Get Mapping Path variable");
         logger.info("City: %s".formatted(city));
 
-        if (city.equals("")) {
-            return null; //TODO: return empty JSONOBject
-        }
-
         Optional<List<Weather>> opt = cacheService.get(city);
         List<Weather> weather = Collections.emptyList();
         
@@ -58,9 +55,10 @@ public class RestyController {
                 if (weather.size()>0){
                     cacheService.save(city, weather);
                 }
-            } catch (Exception e) {
-                logger.warning("Warning: %s".formatted(e.getMessage()));
-                return null;
+            } catch (Exception ex) {
+                logger.severe("GetCity: %s".formatted(ex.getMessage()));
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("GetCity: %s".formatted(ex.getMessage()));
+
             } 
         }
         JsonArrayBuilder arrBuildr = Json.createArrayBuilder();
