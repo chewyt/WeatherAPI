@@ -9,8 +9,8 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 // import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
+// import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+// import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import chewyt.WeatherAPI.WeatherApiApplication;
@@ -40,7 +40,7 @@ public class WeatherConfig {
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
-        RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer(getClass().getClassLoader());
+        // RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer(getClass().getClassLoader());
         final RedisTemplate<String, Object> template = new RedisTemplate<>();
 
         //Ops for Value (Good for storing JSON string)

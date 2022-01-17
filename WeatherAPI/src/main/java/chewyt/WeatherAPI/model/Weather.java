@@ -145,7 +145,7 @@ public class Weather {
             return create(reader.readObject());
 
         } catch (Exception e) {
-            // TODO: Handle error
+            
             return new Weather();
         }
     }
