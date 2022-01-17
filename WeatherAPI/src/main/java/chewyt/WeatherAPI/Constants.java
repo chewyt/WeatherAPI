@@ -7,15 +7,15 @@ public class Constants {
     
 
     //Storing in Config VARS of Heroku
-    // public static final String ENV_WEATHERAPIKEY = System.getenv("ENV_WEATHERAPIKEY");
-    // public static final String ENV_REDISCLOUD = System.getenv("ENV_REDISCLOUD");
+    public static final String ENV_WEATHERAPIKEY = System.getenv("ENV_WEATHERAPIKEY");
+    public static final String ENV_REDISCLOUD = System.getenv("ENV_REDISCLOUD");
     
     
     
     
     //Storing in ENV path locally
-    public static final String ENV_WEATHERAPIKEY = System.getenv("WEATHERAPI");
-    public static final String ENV_REDISCLOUD = System.getenv("REDIS_PW");
+    // public static final String ENV_WEATHERAPIKEY = System.getenv("WEATHERAPI");
+    // public static final String ENV_REDISCLOUD = System.getenv("REDIS_PW");
 
 
 }
